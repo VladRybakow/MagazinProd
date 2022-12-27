@@ -1,0 +1,66 @@
+﻿<Window x:Class="MagazinProd.Windows.SkladWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MagazinProd.Windows"
+        mc:Ignorable="d"
+        Title="SkladWindow" Height="450" Width="800">
+    <Grid>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <Label Content="Работник склада" Grid.ColumnSpan="2" />
+
+        <ListView Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="3" Grid.RowSpan="4" Name="LVMat">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel Margin="10">
+                            <TextBlock Text="Название материала"/>
+                            <TextBlock Text="{Binding Name}"/>
+                        </StackPanel>
+                        <StackPanel Margin="10">
+                            <TextBlock Text="Количество материала"/>
+                            <TextBlock Text="{Binding CountMat}"/>
+                        </StackPanel>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <Label Grid.Column="1" Grid.Row="6" Grid.ColumnSpan="3" Content="Введите название материала" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+        <TextBox Grid.Column="1" Grid.Row="7" Grid.ColumnSpan="3" Name="TBName"/>
+
+        <Label Grid.Column="1" Grid.Row="8" Grid.ColumnSpan="3" Content="Введите количество материала" VerticalAlignment="Center" HorizontalAlignment="Center"/>
+
+        <TextBox Margin="0,0,0,5" Grid.Column="1" Grid.Row="10" Grid.ColumnSpan="3" Name="TBNum"/>
+
+        <Button Grid.Column="5" Grid.Row="7" Content="Купить" Click="AddMat" />
+
+    </Grid>
+</Window>

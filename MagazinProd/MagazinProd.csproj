@@ -35,8 +35,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -55,7 +64,66 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="MainWindow.xaml">
+    <Compile Include="DB\Client.cs">
+      <DependentUpon>MagazinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\MagazinModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MagazinModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\MagazinModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MagazinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\MagazinModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MagazinModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Materials.cs">
+      <DependentUpon>MagazinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Order.cs">
+      <DependentUpon>MagazinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Repair.cs">
+      <DependentUpon>MagazinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Role.cs">
+      <DependentUpon>MagazinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\sysdiagrams.cs">
+      <DependentUpon>MagazinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Telephones.cs">
+      <DependentUpon>MagazinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\TypeDefectTel.cs">
+      <DependentUpon>MagazinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\TypeTelephones.cs">
+      <DependentUpon>MagazinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DB\Users.cs">
+      <DependentUpon>MagazinModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\MasterWindow.xaml.cs">
+      <DependentUpon>MasterWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\SkladWindow.xaml.cs">
+      <DependentUpon>SkladWindow.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Windows\AdminWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\ClientWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -63,10 +131,24 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="Windows\AdminWindow.xaml.cs">
+      <DependentUpon>AdminWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\ClientWindow.xaml.cs">
+      <DependentUpon>ClientWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Windows\MasterWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\SkladWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -86,6 +168,14 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EntityDeploy Include="DB\MagazinModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>MagazinModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="DB\MagazinModel.edmx.diagram">
+      <DependentUpon>MagazinModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -93,6 +183,22 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="DB\MagazinModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>MagazinModel.Context.cs</LastGenOutput>
+      <DependentUpon>MagazinModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="DB\MagazinModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MagazinModel.edmx</DependentUpon>
+      <LastGenOutput>MagazinModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
